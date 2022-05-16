@@ -1,0 +1,31 @@
+<!-- <div *ngFor="let niveau of niveuxSet">
+    <p>{{niveau}}</p>
+  <p  *ngFor="let pfe of getListPfeByniveu(niveau)" >{{pfe.titre}} </p>
+
+
+</div> -->
+<div id="wrapper">
+  
+ <nav class="  navbar navbar-dark align-items-start sidebar  sidebar-dark accordion bg-gradient-primary p-0" style="width: 100%; min-width: 300px;  overflow-y: auto;max-height: 32.5rem;height: auto;" >
+    <div class="container-fluid d-flex flex-column p-0 "><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#"></a>
+        <hr class="sidebar-divider my-0" />
+        <ul id="accordionSidebar" class="navbar-nav text-light" *ngFor="let anne of anneSet">
+              <li class="navbar-nav text-light" >{{anne}}</li>
+           
+        <ul id="accordionSidebar" class="navbar-nav text-light" *ngFor="let niveau of getListniveuxByanne(anne)">
+            <li class="nav-item"><a class="nav-link active"  ><span>{{niveau}}</span></a></li>
+            <li class="nav-item"><a class="nav-link" *ngFor="let pfe of getListPfeByniveu(niveau,anne)" (click)="pfefirst=pfe"><i class="fas fa-user"></i><span>{{pfe.titre}} </span></a></li>
+            <!-- <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-table"></i><span>Table</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li> -->
+        </ul>
+    
+    </ul>
+        <div class="text-center d-none d-md-inline"><button id="sidebarToggle" class="btn rounded-circle border-0" type="button"></button></div>
+    </div>
+</nav>
+
+<div id="content" classe=" " style="width: 100%;height:100%">
+<app-affiche-pfe [pfe]="pfefirst"></app-affiche-pfe>
+</div>
+</div>

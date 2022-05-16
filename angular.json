@@ -27,9 +27,33 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+             
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "src/styles.css",
+              "src/assets/css/serie-card-responsive.css",
+              "src/assets/css/Recipe-Card.css",
+              "src/assets/bootstrap/css/bootstrap.min.css",
+              "src/assets/fonts/fontawesome-all.min.css",
+              "src/assets/fonts/font-awesome.min.css",
+              "src/assets/fonts/fontawesome5-overrides.min.css",
+              "src/assets/css/Good-login-dropdown-menu-1.css",
+              "src/assets/css/Good-login-dropdown-menu.css",
+              "src/assets/css/Pretty-Search-Form.css",
+              "src/assets/css/Responsive-Form-1.css",
+              "src/assets/css/ResponsiveForm.css",
+              "src/assets/css/untitled.css"
+              
             ],
-            "scripts": []
+            "scripts": ["src/assets/bootstrap/js/bootstrap.min.js",
+              "src/assets/js/bs-init.js","src/assets/js/theme.js"
+              
+             
+             
+              
+             
+             
+            ]
           },
           "configurations": {
             "production": {

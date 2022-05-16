@@ -1,0 +1,88 @@
+	<!-- <div class="cadraffiche">
+		<div class="row" id="serie-card">
+			<div class="col-auto d-flex justify-content-center"><img id="poster" class="img-fluid" [src]="pfe.photo" height="auto" /></div><div class="col"><span id="title">{{pfe.niveau}}</span>
+				<div class="d-flex justify-content-end">
+					<p class="text-nowrap">Niveux :{{pfe.niveau}}</p>
+					<span id="rating-serie"></span><p [hidden]="pfe.stage">Stage</p>
+				
+					</div><div class="d-flex"><span id="year_start">Anne : {{pfe.anne}}</span></div>
+					<span id="plot">{{pfe.description}}</span>
+					<div class="d-flex" style="margin-top: 15px;">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		 -->
+		
+
+
+		 <div class="cadraffiche" data-aos="fade" data-aos-once="true">
+			<div class="row" id="serie-card"><div class="col-auto d-flex justify-content-center"><img id="poster" class="img-fluid" [src]="base64ToImage(pfe.photo)" height="auto" /></div>
+				<div class="col"><span id="title">{{pfe.titre}}</span>
+					<div class="d-flex justify-content-end">
+						<p class="text-nowrap">Niveux :</p><span id="rating-serie">{{pfe.niveau}}</span>
+						
+					</div>
+					<div class="d-flex"><span id="year_start">L'année</span>
+						<p id="separator">-</p><span id="year_end">{{pfe.anne}}</span>
+					</div><span id="plot" class="">{{pfe.description}}</span>
+					<div class="d-flex" style="margin-top: 15px;">
+						
+					</div>
+					
+					<button class="btn btn-primary" type="button"  (click)="open(content)" >Update</button>
+				</div>
+			</div>
+			<div class="col p-2"><a class="btn btn-primary btn-sm  d-sm-inline-block" role="button" (click)="Doawload(pfe.rapport,pfe.titre,'pdf')" ><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a></div>
+
+
+
+
+
+			
+<ng-template #content let-modal>
+	<div class="modal-header">
+	  <h4 class="modal-title" id="modal-basic-title">Ajouter un PFE</h4>
+	  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+	<div class="modal-body">
+	  <form enctype="multipart/form-data">
+	 
+		<div class="mb-3"><input class="form-control" type="text" name="titre" placeholder="Titre"  [(ngModel)]="pfe.titre" /></div>
+		<div class="mb-3"><input class="form-control " type="text" name="niveux" placeholder="Niveux"  [(ngModel)]="pfe.niveau"/></div>
+		<div class="mb-3"><textarea class="form-control" name="description" placeholder="description"  [(ngModel)]="pfe.description"   rows="6"></textarea></div>
+		<div class="mb-3">
+		  L'anne
+		  <input type="number"  min="2010" [max]="currentTime.getFullYear()" class="form-control" name="datepicker" id="datepicker"  [(ngModel)]="pfe.anne" />      
+		</div>
+		<div class="mb-3">
+		  <div class="form-check">
+			<input class="form-check-input" type="checkbox" name="isString" id="flexCheckDefault"  [(ngModel)]="pfe.stage">
+			<label class="form-check-label" for="flexCheckDefault">
+			  Stage
+			</label>
+		  </div>
+		</div>
+		<div class="mb-3">
+			<label>Rapport</label><br>
+			<input type="file"  name="photo"    (change)="chargerapport($event)"  >
+		</div>
+		<div class="mb-3">
+			<label>Photo de garde</label><br>
+			<input type="file" name="photo"  (change)="chargephoto($event)"  >
+		</div>
+		<div class="mb-3">
+		  <button type="button" class="btn  btn-primary" (click)="Upload()"  (click)="modal.close('Save click')">
+			 <span class="btn-label"><i class="fa fa-check"></i></span>Save</button>
+		</div>
+		
+	</form>
+	</div>
+	<div class="modal-footer">
+	  
+	</div>
+  </ng-template>
+  

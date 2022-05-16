@@ -1,0 +1,26 @@
+
+
+<div class="wrapper">
+    <nav id="sidebar" class=" navbar navbar-dark align-items-start sidebar  sidebar-dark accordion bg-gradient-primary p-0" style="width: 100%; min-width: 300px;  overflow-y: auto;max-height: 40.5rem;height: auto;">	
+        <div class="sidebar-header">	
+            <h3>Groups</h3>	<hr>	</div>	
+            <ul class="list-unstyled components">	
+               
+                <li *ngFor="let niveux of niveuxSet">	
+                    <a >{{niveux}}</a>	
+                    <ul class=" list-unstyled" id="homeSubmenu">	
+                        <li *ngFor="let groupe of getListPfeByniveu(niveux)">	
+                            <a  (click)="group=groupe"  >Groupe de Pfe :  {{groupe.titre}}</a>
+                        </li>
+                        	
+                    </ul>	
+                </li>	
+                	
+               	
+                           
+            </ul>	
+                       
+        </nav>	
+        <div class="content-wrapper"> <app-chat-prof [grouppfe]="group"></app-chat-prof> <div class="line"></div> </div>	
+        
+ </div>

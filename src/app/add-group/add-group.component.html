@@ -1,0 +1,26 @@
+<div class="container">
+<form> 
+   email <input type="email" name="email" [(ngModel)]="groupe.email"><br>
+   password <input type="password" name="password" [(ngModel)]="groupe.password"><br>
+   niveau <input type="text" name="niveu" [(ngModel)]="groupe.niveau"><br>
+   Departement<select name="departemes" [(ngModel)]="groupe.depatementId">
+      <option value="1">Informatique</option>
+      <option value="2">Chimie</option>
+      <option value="3">Math</option>
+   </select>
+   <input type="submit" value="envoyer" (click)="affiche()">
+</form>
+<br>
+number de etudiant <input type="number" name="nbretudiant"  [(ngModel)]="nbrEtudiant" (input)="charge(nbrEtudiant)">
+<form >
+   <div *ngFor="let index of [].constructor(nbrEtudiant);let i=index">
+       <p>Etudiant N_ {{i+1}}</p>
+      
+       Nom<input type="text" name="name"  [(ngModel)]="ListEtudiant[i].nom" ><br>
+       prenom<input type="text" name="prenom" [(ngModel)]="ListEtudiant[i].prenom" ><br>
+       Apogee<input type="text" name="appoge" [(ngModel)]="ListEtudiant[i].appogee" >
+      <hr>
+   </div >
+   
+</form>
+</div>

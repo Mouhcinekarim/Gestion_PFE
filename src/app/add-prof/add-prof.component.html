@@ -1,0 +1,14 @@
+<form>
+      nom <input type="text" name="nom" [(ngModel)]="prof.nom"><br>
+      prenom  <input type="text" name="prenom" [(ngModel)]="prof.prenom"><br>
+      email <input type="text" name="email" [(ngModel)]="prof.email"><br>
+      password <input type="password" name="password" [(ngModel)]="prof.password"><br>
+      Departement<select name="departement" [(ngModel)]="prof.departementId">
+       <option value="1">Informatique</option>
+        <option value="2">Chimie</option>
+        <option value="3">Physique</option>
+        <option value="4">Math</option>
+    </select><br>
+    <input type="submit" value="Ajouter" (click)="Ajouter()" class="btn btn-primary">
+    
+</form>
