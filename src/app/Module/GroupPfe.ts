@@ -1,12 +1,16 @@
 export interface GroupPfe {
-    PfeInfoId:number;
+    pfeInfoId:number;
 	email:string;
 	description:string;
 	titre:string;	
 	niveau:string;
 	GroupId:number;
 	anne:number;
-	etudiants:Etudiant[];
+	etudiant:Etudiant[];
+	nom_prof:string;
+	prenom_prof:string;
+	email_prof:string;
+	
 }
 
 interface Etudiant {

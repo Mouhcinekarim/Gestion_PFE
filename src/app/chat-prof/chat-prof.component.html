@@ -1,8 +1,8 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div *ngIf="grouppfe!=null" class="card shadow" style="margin-bottom: 50px;"  >
 <div class="card-header py-3">
 <p class="text-primary m-0 fw-bold" style="border-color: rgb(0,1,4);width: 622.333px;">Les etudiants 
-    <span *ngFor="let etudiant of  grouppfe.etudiants"> {{etudiant.nom}} {{etudiant.prenom}}  m-0
+    <span *ngFor="let etudiant of  grouppfe.etudiant"> {{etudiant.nom}} {{etudiant.prenom}}  m-0
 
     </span>   </p>
 <p class="text-primary m-0 fw-bold" style="border-color: rgb(0,1,4);width: 528.333px;"><strong></strong><span style="color: var(--bs-gray-900);font-size: 20px;"></span><br /></p>
@@ -28,4 +28,8 @@
 </div>
 <div class="card-header"></div>
 </div>
-</div>
+</div> -->
+
+<app-chat-home [role]="role" [id_user]="username"></app-chat-home>
+
+

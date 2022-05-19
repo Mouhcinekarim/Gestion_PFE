@@ -16,7 +16,18 @@ import { AffichePfeComponent } from './affiche-pfe/affiche-pfe.component';
 import { AddGroupComponent } from './add-group/add-group.component';
 import { ListGroupComponent } from './list-group/list-group.component';
 import { ListPfeV2Component } from './list-pfe-v2/list-pfe-v2.component';
-import { ChatProfComponent } from './chat-prof/chat-prof.component'
+import { ChatProfComponent } from './chat-prof/chat-prof.component';
+import { ChatGroupComponent } from './chat-group/chat-group.component';
+import { ChatHomeComponent } from './chat-home/chat-home.component';
+import { ListUserComponent } from './list-user/list-user.component';
+import { ListuComponent } from './listu/listu.component';
+import { MessagesComponent } from './messages/messages.component'
+import { MatInputModule } from '@angular/material/input';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
+import { myRxStompConfig } from './my-rx-stomp.config';
+import {MatListModule} from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +39,12 @@ import { ChatProfComponent } from './chat-prof/chat-prof.component'
     AddGroupComponent,
     ListGroupComponent,
     ListPfeV2Component,
-    ChatProfComponent
+    ChatProfComponent,
+    ChatGroupComponent,
+    ChatHomeComponent,
+    ListUserComponent,
+    ListuComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +54,22 @@ import { ChatProfComponent } from './chat-prof/chat-prof.component'
     AppRoutingModule,
     NgbModule,
     MatDatepickerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatInputModule,
+    MatGridListModule,
+    MatListModule,
+    BrowserAnimationsModule
+    
   ],
-  providers: [],
+  providers: [{
+    provide: InjectableRxStompConfig,
+    useValue: myRxStompConfig
+  },
+  {
+    provide: RxStompService,
+    useFactory: rxStompServiceFactory,
+    deps: [InjectableRxStompConfig]
+  },],
   bootstrap: [AppComponent,AddPfeComponent]
 })
 export class AppModule { }

@@ -10,11 +10,11 @@ import {GroupPfe} from '../Module/GroupPfe'
   providedIn: 'root'
 })
 export class ServicePfeService {
-  private server = "http://localhost:8085";
+  private server = "http://localhost:8084";
   constructor(private http:HttpClient) { }
 
 
-  upload(formData:FormData){
+  upload(formData:string){
     return this.http.post<string>(`${this.server}/PFE`, formData,{
       observe:'response'
     });
@@ -33,7 +33,7 @@ export class ServicePfeService {
         return this.http.post<Prof>(`${this.server}/Professeur`,prof,{headers: headers});
       }
 
-      getListPfeByIdProf(idProf:number){
+      getListPfeByIdProf(idProf:string){
          return this.http.get<PFEfile[]>(`${this.server}/Professeur/pfe/${idProf}`)
       }
 
@@ -53,7 +53,13 @@ export class ServicePfeService {
 
       }
 
-      getGroupProf(id:number){
+      getGroupProf(id:string){
         return this.http.get<GroupPfe[]>(`${this.server}/Professeur/groupe/${id}`) 
       }
+  
+
+      getPfeGroup(email:string){
+        return this.http.get<GroupPfe>(`${this.server}/groupe/${email}`) 
+      }
+
 }

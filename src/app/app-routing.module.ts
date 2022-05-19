@@ -8,6 +8,8 @@ import { AddGroupComponent } from './add-group/add-group.component'
 import { ListGroupComponent } from './list-group/list-group.component'
 import { ListPfeV2Component } from './list-pfe-v2/list-pfe-v2.component'
 import { ChatProfComponent } from './chat-prof/chat-prof.component'
+import { ChatGroupComponent } from './chat-group/chat-group.component'
+import { ChatHomeComponent } from './chat-home/chat-home.component';
 const routes: Routes = [
   {path:'ajouter',component:AddPfeComponent},
   {path:'cherche',component:HomeComponent},
@@ -16,7 +18,9 @@ const routes: Routes = [
   {path:'Addgoupe',component:AddGroupComponent},
   {path:'mesgroups',component:ListGroupComponent},
   {path:'mesPfe2',component:ListPfeV2Component},
-  {path:'chatprog',component:ChatProfComponent}
+  {path:'chatprog',component:ChatProfComponent},
+  {path:'group',component:ChatGroupComponent},
+  {path:'hommessage',component:ChatHomeComponent}
 ];
 
 @NgModule({

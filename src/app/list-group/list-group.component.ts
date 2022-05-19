@@ -20,7 +20,7 @@ export class ListGroupComponent implements OnInit {
    
   getList(){
 
-    this.fileService.getGroupProf(1).subscribe((resp)=>{
+    this.fileService.getGroupProf('hichame@gmail.com').subscribe((resp)=>{
      
       this.groupe=resp;
       console.log( this.groupe)

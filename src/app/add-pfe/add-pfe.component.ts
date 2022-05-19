@@ -12,22 +12,31 @@ export class AddPfeComponent implements OnInit {
   currentTime = new Date()
   closeResult :string;
   pfe:PFEinfo;
-  photo:Blob;
-  rapport:Blob;
+  
   constructor(private fileService:ServicePfeService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.pfe=new  PFEinfo();
-    this.pfe.idprof=2;
+    this.pfe.idprof='hichame@gmail.com';
 
   }
 
   chargerapport(event:any){
-    this.rapport=event.target.files[0];
+     this.blobToBase64( event.target.files[0]).then(res=>{
+      this.pfe.rapport1=(res as string);
+      this.pfe.conferm=true
+    })
+  
   }
 
   chargephoto(event:any){
-    this.photo=event.target.files[0];
+
+    this.blobToBase64( event.target.files[0]).then(res=>{
+      this.pfe.photo1=(res as string);
+      this.pfe
+    })
+  
+   
   }
 
 
@@ -35,13 +44,13 @@ export class AddPfeComponent implements OnInit {
   Upload(){
     console.log(this.pfe)
     var formdata = new FormData();
-    formdata.append('rapport',this.rapport);
-    formdata.append('PFEinfo',JSON.stringify(this.pfe))
-    formdata.append('photo',this.photo);
+   
+   JSON.stringify(this.pfe)
+   
     
     
     console.log(JSON.stringify(this.pfe))
-    this.fileService.upload(formdata).subscribe(
+    this.fileService.upload(JSON.stringify(this.pfe)).subscribe(
       resp => {
         console.log(resp.status)
         if(resp.status === 200)  console.log("uploaded")
@@ -53,8 +62,9 @@ export class AddPfeComponent implements OnInit {
   }
   
 // ----------------------------Concerne modal 
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  open(content,id) {
+    console.log(content)
+    this.modalService.open(content, {ariaLabelledBy: id}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -70,5 +80,14 @@ export class AddPfeComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
+  // ---------------------convert blob to base64
+   blobToBase64  = blob => {
+    const reader = new FileReader();
+    reader.readAsDataURL(blob);
+    return new Promise<string|ArrayBuffer>(resolve => {
+      reader.onloadend = () => {
+        resolve(reader.result);
+      };
+    });
+  };
 }

@@ -15,7 +15,7 @@ export class AddGroupComponent implements OnInit {
   constructor(private fileService:ServicePfeService) { }
  
   ngOnInit(): void {
-   this.groupe=new Group();
+ this.groupe=new Group();
    this.etudiant=new Etudiant();
 
   }

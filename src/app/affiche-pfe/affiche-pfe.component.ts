@@ -2,7 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { PFEfile } from '../Module/PFEfile';
 import {PFEinfo} from 'src/app/Module/PFEinfo';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import {ServicePfeService} from 'src/app/Service/service-pfe.service'
+import {ServicePfeService} from 'src/app/Service/service-pfe.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-affiche-pfe',
