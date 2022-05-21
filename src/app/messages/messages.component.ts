@@ -32,34 +32,39 @@ export class MessagesComponent implements OnInit {
         for(let i=0;i<resp.length;i++){
           
           this.messageService.pushMessage(resp[i])
-
+           
         }
        
-        
+       
       })
-     
+      
         this.filterMessages();
-     
+      
       console.log("init message "+this.channel)
     });
    
     this.messageService.getMessages().subscribe(messages => {
      
       this.filterMessages();
-    
+     
     });
+ 
    
   }
   
   filterMessages() {
 
     this.filteredMessages = this.messageService.filterMessages(this.channel);
-    this.scrollToBottom();
+    window.scrollTo(0, document.body.scrollHeight);
+    this.scrollToBottom()
   }
 
   scrollToBottom() {
+   
     const msgContainer = document.getElementById('msg-container');
-    msgContainer.scrollTop = msgContainer.scrollHeight;
+   
+    
+   
   }
   sendMessage() {
     if (this.newMessage) {

@@ -59,15 +59,18 @@ export class ListUserComponent implements OnInit {
   }
 
   startChatWithUser(user) {
-   if(this.channel==null){
+   
+     
     const channelId = ChannelService.createChannel(this.username, user.username);
     console.log("star list "+this.channel)
+    if(channelId!=this.channel){
     this.channelService.refreshChannel(channelId);
     this.receiver = user.username;
     this.highlightedUsers = this.highlightedUsers.filter(u => u !== user.username);
     // this.receiverUpdated.emit(user.username);
     this.messageService.sendReadReceipt(channelId, user.username);
-  }
+    
+    }
 }
 
 getOtherUsers(): Array<User> {
@@ -113,9 +116,9 @@ subscribeToOtherUser(otherUser): string {
   this.stompService.watch(`/channel/chat/${channelId}`).subscribe(res => {
    
       const data: Message = JSON.parse(res.body);
-      alert(data.content)
+    
       this.messageService.pushMessage(data);
-
+      this.messageService.filterMessages(channelId)
       if (data.channel !== this.channel) {
           // this.showNotification(data);
       } else {

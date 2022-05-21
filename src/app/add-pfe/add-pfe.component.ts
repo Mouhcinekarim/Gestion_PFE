@@ -45,15 +45,19 @@ export class AddPfeComponent implements OnInit {
     console.log(this.pfe)
     var formdata = new FormData();
    
-   JSON.stringify(this.pfe)
+  //  JSON.stringify(this.pfe)
    
     
     
     console.log(JSON.stringify(this.pfe))
+    this.pfe.anne=this.currentTime.getFullYear();
     this.fileService.upload(JSON.stringify(this.pfe)).subscribe(
       resp => {
         console.log(resp.status)
-        if(resp.status === 200)  console.log("uploaded")
+        if(resp.status === 200) { this.pfe=new PFEinfo();
+                                  this.pfe.idprof='hichame@gmail.com'
+
+        }
         else console.log("no 200")
       
       }

@@ -41,6 +41,10 @@ export class MessageService {
             channel: channelId,
             username: username
         });
+        this.Histoiremessage(channelId).subscribe((messages)=>{
+            this.messages=messages;
+             this.msgs.next(messages)
+        })
     }
 
     getMessages(): Observable<any> {

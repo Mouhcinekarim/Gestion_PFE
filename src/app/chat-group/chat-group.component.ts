@@ -8,12 +8,13 @@ import { GroupPfe } from '../Module/GroupPfe';
 })
 export class ChatGroupComponent implements OnInit {
   role:string='groupe'
-  username='mouhcinekarim@gmail,com'
+  username='mouhcine2001k@gmail.com'
   constructor(private fileService:ServicePfeService) { }
  InfoGroup:GroupPfe;
  email:string
   ngOnInit(): void {
-    this.email='mouhcinekarim@gmail,com'
+    
+    this.email=this.username;
       this.fileService.getPfeGroup(this.email).subscribe((resp)=>{
         this.InfoGroup=resp;
         console.log(this.InfoGroup)

@@ -10,7 +10,7 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./affiche-pfe.component.css']
 })
 export class AffichePfeComponent implements OnInit {
-  @Input() pfe:PFEfile;
+  @Input() Listpfe:PFEfile[];
   closeResult :string;
   image:Blob
   imageURL:SafeUrl
@@ -58,15 +58,15 @@ export class AffichePfeComponent implements OnInit {
     this.photo=event.target.files[0];
   }
 
-  Upload(){
+  Upload(pfe:PFEfile){
     console.log("w")
-    console.log(this.pfe)
-    this.pfeUpdate.anne= this.pfe.anne
-    this.pfeUpdate.description= this.pfe.description
-    this.pfeUpdate.niveau= this.pfe.niveau
-    this.pfeUpdate.idprof= this.pfe.idprof
-    this.pfeUpdate.titre= this.pfe.titre
-    this.pfeUpdate.stage=this.pfe.stage
+    console.log(pfe)
+    this.pfeUpdate.anne= pfe.anne
+    this.pfeUpdate.description= pfe.description
+    this.pfeUpdate.niveau= pfe.niveau
+    this.pfeUpdate.idprof= pfe.idprof
+    this.pfeUpdate.titre= pfe.titre
+    this.pfeUpdate.stage=pfe.stage
     console.log(this.pfeUpdate);
     var formdata = new FormData();
     formdata.append('rapport',this.rapport);
@@ -75,7 +75,7 @@ export class AffichePfeComponent implements OnInit {
     
     console.log(formdata)
     // console.log(JSON.stringify(this.pfeUpdate))
-    this.fileService.update(formdata,this.pfe.pfeInfoId).subscribe(
+    this.fileService.update(formdata,pfe.pfeInfoId).subscribe(
       resp => {
         console.log(resp.status)
         if(resp.status === 200)  console.log("uploaded")

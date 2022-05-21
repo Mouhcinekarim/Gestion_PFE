@@ -80,10 +80,10 @@
       <div class="mb-3"><input class="form-control" type="text" name="titre" placeholder="Titre"  [(ngModel)]="pfe.titre" /></div>
       <div class="mb-3"><input class="form-control " type="text" name="niveux" placeholder="Niveux"  [(ngModel)]="pfe.niveau"/></div>
       <div class="mb-3"><textarea class="form-control" name="description" placeholder="description"  [(ngModel)]="pfe.description"   rows="6"></textarea></div>
-      <div class="mb-3">
-        L'anne
-        <input type="number"  min="2010" [max]="currentTime.getFullYear()" class="form-control" name="datepicker" id="datepicker"  [(ngModel)]="pfe.anne" />      
-      </div>
+      
+       
+        <input type="hidden"   [value]="currentTime.getFullYear()" class="form-control" name="datepicker" id="datepicker"  [(ngModel)]="pfe.anne" />      
+     
       <div class="mb-3">
         <button type="button" class="btn  btn-primary" (click)="Upload()"  (click)="modal.close('Save click')">
            <span class="btn-label"><i class="fa fa-check"></i></span>Save</button>
