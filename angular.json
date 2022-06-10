@@ -42,11 +42,13 @@
               "src/assets/css/Pretty-Search-Form.css",
               "src/assets/css/Responsive-Form-1.css",
               "src/assets/css/ResponsiveForm.css",
-              "src/assets/css/untitled.css"
+              "src/assets/css/untitled.css",
+              "src/assets/css/styles.min.css"
               
             ],
             "scripts": ["src/assets/bootstrap/js/bootstrap.min.js",
-              "src/assets/js/bs-init.js","src/assets/js/theme.js"
+              "src/assets/js/bs-init.js","src/assets/js/theme.js",
+              "src/assets/js/script.min.js"
               
              
              

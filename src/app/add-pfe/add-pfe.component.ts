@@ -22,12 +22,12 @@ export class AddPfeComponent implements OnInit {
   }
 
   chargerapport(event:any){
-     this.blobToBase64( event.target.files[0]).then(res=>{
-      this.pfe.rapport1=(res as string);
-      this.pfe.conferm=true
-    })
-  
-  }
+    this.blobToBase64( event.target.files[0]).then(res=>{
+     this.pfe.rapport1=(res as string);
+     this.pfe.conferm=true
+   })
+ 
+ }
 
   chargephoto(event:any){
 

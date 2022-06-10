@@ -36,8 +36,13 @@ export class ListPfeComponent implements OnInit {
              this.listboolean.add(pfe.conferm)
             
           })
-       console.log( this.listboolean)
-          
+      
+          console.log()
+          if(this.listboolean.entries().next().value[0] && this.listboolean.size>1 ) {
+            this.listboolean.delete(true);
+            this.listboolean.add(true)
+           
+          }
           this.list=this.getListPfeByniveu(this.niveuxSet[0],this.anneSet[0],false);
     })
   }

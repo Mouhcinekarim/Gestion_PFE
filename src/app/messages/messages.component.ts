@@ -67,7 +67,9 @@ export class MessagesComponent implements OnInit {
    
   }
   sendMessage() {
+    
     if (this.newMessage) {
+      alert()
      console.log(JSON.stringify({
         'channel': this.channel,
         'sender': this.username,
@@ -110,7 +112,7 @@ blobToBase64  = blob => {
 };
 
 public base64ToBlob(b64Data, contentType='', sliceSize=512) {
-   
+   console.log(b64Data)
    
   b64Data = b64Data.replace(/\s/g, ''); //IE compatibility...
   let byteCharacters = atob(b64Data);

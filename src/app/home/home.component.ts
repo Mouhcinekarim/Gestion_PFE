@@ -3,13 +3,15 @@ import { PFE } from 'src/app/Module/PFE';
 import { Filter } from 'src/app/Module/filter';
 import {ServicePfeService} from 'src/app/Service/service-pfe.service';
 
-
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  image:Blob
+  imageURL:SafeUrl
   valide:boolean=true
   ListPFE:PFE[];
   filterlist:PFE[]=[];
@@ -37,57 +39,13 @@ export class HomeComponent implements OnInit {
    
 
 
-  constructor(private fileService:ServicePfeService) { }
+  constructor(private fileService:ServicePfeService,private sanitizer: DomSanitizer) { }
  
   ngOnInit(): void {
     this.niveauSet= new Set<string>();
     for(let i=2010;i<=2024;i++) this.annes.push(i)
     this.filter= new Filter();
-    // this.ListPFE=[
-    //   {
-    //   titre:'mouhcine',
-    // niveau:'licence',
-    // description:'',
-    // anne:2019,
-    // isStage:true,
-    // nom:'zoughar',
-    // departement:'informatique',
-    // photo:'',
-    // rapport:''
-    //   },
-    //   {
-    //     titre:'karim',
-    //   niveaux:'licence',
-    //   description:'',
-    //   annee:2001,
-    //   isStrage:true,
-    //   encadrant:'zoughar',
-    //   departement:'informatique',
-    //   photo:'',
-    //   rapport:''
-    //     },{
-    //       titre:'hamza',
-    //     niveaux:'master',
-    //     description:'',
-    //     annee:2001,
-    //     isStrage:true,
-    //     encadrant:'louz',
-    //     departement:'chimie',
-    //     photo:'',
-    //     rapport:''
-    //       },{
-    //         titre:'salm',
-    //       niveaux:'master',
-    //       description:'',
-    //       annee:209,
-    //       isStrage:false,
-    //       encadrant:'mahdi',
-    //       departement:'economi',
-    //       photo:'',
-    //       rapport:''
-    //         },
-    // ]
-
+   
     this.getList();
     
   }
@@ -168,6 +126,11 @@ export class HomeComponent implements OnInit {
         byteArrays.push(byteArray);
     }
     return new Blob(byteArrays, {type: contentType});
+}
+base64ToImage(base){
+  this.image=this.base64ToBlob(base)
+  this.imageURL = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(this.image))
+  return this.imageURL
 }
 
   
